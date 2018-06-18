@@ -1,20 +1,24 @@
 {
   "name": "mock-server",
   "version": "1.0.0",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --mode=production",
-    "dev": "webpack --mode=development --watch",
-    "type-check": "tsc"
+    "build": "yarn cleanup && tsc",
+    "cleanup": "rm -rf ./dist",
+    "dev": "yarn build && micro-dev",
+    "inspect": "node --inspect node_modules/.bin/micro-dev",
+    "start": "micro"
   },
   "devDependencies": {
+    "@types/micro": "^7.3.1",
     "prettier": "^1.13.5",
-    "ts-loader": "^4.4.1",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
-    "typescript": "^2.9.2",
-    "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.8"
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "micro": "^9.3.2",
+    "micro-dev": "^3.0.0"
   }
 }
